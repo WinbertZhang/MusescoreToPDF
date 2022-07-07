@@ -1,8 +1,7 @@
 from selenium import webdriver
-from fpdf import FPDF
 from PIL import Image
+import pyautogui
 import urllib.request
-import time
 import warnings
 import os
 
@@ -19,30 +18,28 @@ options.add_experimental_option('excludeSwitches', ['enable-logging'])
 driver = webdriver.Chrome(options=options)
 driver.get(url)
 driver.implicitly_wait(5)
-warnings.filterwarnings("ignore", category=DeprecationWarning) 
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 driver.find_element_by_xpath("/html/body[@class='js desktop js-cookie-compliance theme-react summer-sale']/div[@class='js-page react-container']/div[@class='_5tn-M']/section[@class='HJV7K']/main[@class='_1sdLO _1ss1d']/div[@class='_2G3ri']/div[@class='_3UHUA']/div[@class='_36dkj']/div[@id='jmuse-scroller-component']").click()
 elt = driver.find_element_by_xpath("/html/body[@class='js desktop js-cookie-compliance theme-react summer-sale']/div[@class='js-page react-container']/div[@class='_5tn-M']/section[@class='HJV7K']/main[@class='_1sdLO _1ss1d']/div[@class='_2G3ri']/div[@class='_3UHUA']/div[@class='_36dkj']/div[@id='jmuse-scroller-component']/div[@class='vAVs3'][1]/img[@class='_2zZ8u']")
 altTag = elt.get_attribute("alt")
+images = []
+pdf_path = "MusescoreToPDF.pdf"
 
 try:
     numPages = int(altTag[::-1][5:altTag[::-1].find(" ", 6)][::-1])
 except:
     print('Number of Pages not found')
 
-images = []
-
 for pageNum in range(1, numPages+1):
     elt = driver.find_element_by_xpath("/html/body[@class='js desktop js-cookie-compliance theme-react summer-sale']/div[@class='js-page react-container']/div[@class='_5tn-M']/section[@class='HJV7K']/main[@class='_1sdLO _1ss1d']/div[@class='_2G3ri']/div[@class='_3UHUA']/div[@class='_36dkj']/div[@id='jmuse-scroller-component']/div[@class='vAVs3']["+str(pageNum)+"]/img[@class='_2zZ8u']")
-    time.sleep(0.3)
+    for i in range(20):
+        pyautogui.press('down')
     print("DEBUG LOG (current page): "+ elt.get_attribute("src"))
     url = elt.get_attribute("src")
     image = urllib.request.urlretrieve(url, str(pageNum)+".png")
-    images.append(Image.open(str(pageNum)+".png"))
+    images.append(Image.open(str(pageNum)+".png"))\
 
-title = driver.find_element_by_xpath("/html/body[@class='js desktop js-cookie-compliance theme-react summer-sale']/div[@class='js-page react-container']/div[@class='_5tn-M']/section[@class='HJV7K']/aside[@class='_3NsiN']/div[@class='_3QWgW _2KlZ2 _3LaBc'][1]/h1[@class='_3ke60 _1z2GN _3eL0a GgVyz']").text.strip()
-title = title.replace('/', ' ')
-pdf_path = title+".pdf"
 images[0].save(pdf_path, "PDF" ,resolution=100.0, save_all=True, append_images=images[1:])
 
 for pageNum in range(1, numPages+1):
