@@ -21,6 +21,7 @@ driver.get(url)
 driver.implicitly_wait(5)
 warnings.filterwarnings("ignore", category=DeprecationWarning) 
 
+driver.find_element_by_xpath("/html/body[@class='js desktop js-cookie-compliance theme-react summer-sale']/div[@class='js-page react-container']/div[@class='_5tn-M']/section[@class='HJV7K']/main[@class='_1sdLO _1ss1d']/div[@class='_2G3ri']/div[@class='_3UHUA']/div[@class='_36dkj']/div[@id='jmuse-scroller-component']").click()
 elt = driver.find_element_by_xpath("/html/body[@class='js desktop js-cookie-compliance theme-react summer-sale']/div[@class='js-page react-container']/div[@class='_5tn-M']/section[@class='HJV7K']/main[@class='_1sdLO _1ss1d']/div[@class='_2G3ri']/div[@class='_3UHUA']/div[@class='_36dkj']/div[@id='jmuse-scroller-component']/div[@class='vAVs3'][1]/img[@class='_2zZ8u']")
 altTag = elt.get_attribute("alt")
 
@@ -29,19 +30,19 @@ try:
 except:
     print('Number of Pages not found')
 
-print("DEBUG LOG (numPages): " + str(numPages))
-
 images = []
 
 for pageNum in range(1, numPages+1):
     elt = driver.find_element_by_xpath("/html/body[@class='js desktop js-cookie-compliance theme-react summer-sale']/div[@class='js-page react-container']/div[@class='_5tn-M']/section[@class='HJV7K']/main[@class='_1sdLO _1ss1d']/div[@class='_2G3ri']/div[@class='_3UHUA']/div[@class='_36dkj']/div[@id='jmuse-scroller-component']/div[@class='vAVs3']["+str(pageNum)+"]/img[@class='_2zZ8u']")
-    time.sleep(1)
-    print("DEBUG LOG (current page):" + elt.get_attribute("src"))
+    time.sleep(0.3)
+    print("DEBUG LOG (current page): "+ elt.get_attribute("src"))
     url = elt.get_attribute("src")
     image = urllib.request.urlretrieve(url, str(pageNum)+".png")
     images.append(Image.open(str(pageNum)+".png"))
 
-pdf_path = "C:\\Users\\conne\\Documents\\GitHub\\MusescoreToPDF\\sheetmusic.pdf"
+title = driver.find_element_by_xpath("/html/body[@class='js desktop js-cookie-compliance theme-react summer-sale']/div[@class='js-page react-container']/div[@class='_5tn-M']/section[@class='HJV7K']/aside[@class='_3NsiN']/div[@class='_3QWgW _2KlZ2 _3LaBc'][1]/h1[@class='_3ke60 _1z2GN _3eL0a GgVyz']").text.strip()
+title = title.replace('/', ' ')
+pdf_path = title+".pdf"
 images[0].save(pdf_path, "PDF" ,resolution=100.0, save_all=True, append_images=images[1:])
 
 for pageNum in range(1, numPages+1):
