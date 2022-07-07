@@ -5,7 +5,7 @@ Scrapes Musescore page and saves score as pdf
 
 - Chrome version 103
 - Python 3
-- Selenium, Pillow, Pyautogui (run below for install instructions)
+- Selenium, Pillow, Pyautogui (run below to install)
 ```
 pip install selenium
 pip install Pillow
@@ -18,4 +18,5 @@ pip install pyautogui
     3. pdf will be in folder
 
 ## Additional Notes
+Don't click on the screen while program is running
 We are not responsible for any legal issues regarding users of our software
