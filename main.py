@@ -1,9 +1,14 @@
 from selenium import webdriver
 
-print("Enter a valid muscore url")
-url = input()
+loop = True
+while(loop):
+    print("Enter a valid muscore url")
+    url = input()
 
-#TODO: Check that url is valid
+    if not (url.startswith('https://musescore.com') or url.startswith('musescore.com')):
+        print('Invalid url')
+    else:
+        loop = False
 
 options = webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
