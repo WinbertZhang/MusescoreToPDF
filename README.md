@@ -1,2 +1,2 @@
 # MuscoreToPDF
-Scrapes Muscore page and saves score as pdf
+Scrapes Musescore page and saves score as pdf
