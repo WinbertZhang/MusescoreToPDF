@@ -18,5 +18,5 @@ pip install pyautogui
     3. pdf will be in folder
 
 ## Additional Notes
-Don't click on the screen while program is running
+Don't click on the screen while program is running  
 We are not responsible for any legal issues regarding users of our software
