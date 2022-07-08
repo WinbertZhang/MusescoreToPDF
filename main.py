@@ -25,7 +25,7 @@ driver.find_element(By.XPATH, "/html/body[@class='js desktop js-cookie-complianc
 elt = driver.find_element(By.XPATH, "/html/body[@class='js desktop js-cookie-compliance theme-react summer-sale']/div[@class='js-page react-container']/div[@class='_5tn-M']/section[@class='HJV7K']/main[@class='_1sdLO _1ss1d']/div[@class='_2G3ri']/div[@class='_3UHUA']/div[@class='_36dkj']/div[@id='jmuse-scroller-component']/div[@class='vAVs3'][1]/img[@class='_2zZ8u']")
 altTag = elt.get_attribute("alt")
 images = []
-pdf_path = "MusescoreToPDF.pdf"
+pdf_path = "converted_pdfs/MusescoreToPDF.pdf"
 
 try:
     numPages = int(altTag[::-1][5:altTag[::-1].find(" ", 6)][::-1])
@@ -46,6 +46,8 @@ for pageNum in range(1, numPages+1):
     url = elt.get_attribute("src")
     image = urllib.request.urlretrieve(url, str(pageNum)+".png")
     images.append(Image.open(str(pageNum)+".png"))\
+
+os.makedirs('converted_pdfs')
 
 images[0].save(pdf_path, "PDF" ,resolution=100.0, save_all=True, append_images=images[1:])
 
