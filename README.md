@@ -15,7 +15,7 @@ pip install pyautogui
 ## Instructions
     1. run python main.py
     2. enter valid musescore url
-    3. pdf will be in folder
+    3. pdf will be in folder named as MusescoreToPDF.pdf
 
 ## Additional Notes
 Don't click on the screen while program is running  
