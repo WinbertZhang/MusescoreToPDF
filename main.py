@@ -32,9 +32,13 @@ try:
 except:
     print('Number of Pages not found')
 
+for i in range(10):
+    pyautogui.hotkey('ctrl', '-')
+    pyautogui.hotkey('command', '-')
+
 for pageNum in range(1, numPages+1):
     elt = driver.find_element(By.XPATH, "/html/body[@class='js desktop js-cookie-compliance theme-react summer-sale']/div[@class='js-page react-container']/div[@class='_5tn-M']/section[@class='HJV7K']/main[@class='_1sdLO _1ss1d']/div[@class='_2G3ri']/div[@class='_3UHUA']/div[@class='_36dkj']/div[@id='jmuse-scroller-component']/div[@class='vAVs3']["+str(pageNum)+"]/img[@class='_2zZ8u']")
-    for i in range(20):
+    for i in range(5):
         pyautogui.press('down')
     print("DEBUG LOG (current page): "+ elt.get_attribute("src"))
     url = elt.get_attribute("src")
