@@ -1,10 +1,12 @@
 # MusescoreToPDF
 Uses a single Python script to scrape [Musescore](https://musescore.com) and saves the score as a pdf. Below are the instructions for use with Windows 10 and above.
 
+## Windows
+If you are using windows, you need to determine the chrome version you're using by going into chrome's `Settings > About Chrome`. Download the appropriate selenium driver [here](https://chromedriver.chromium.org/downloads).
 ## Dependencies
 
-- Chrome version 103
-- Python 3
+- Chrome driver (instructions above)
+- Python 3 (Version 3.7+)
 - Selenium, Pillow, Pyautogui (run below to install)
 ```
 pip install selenium

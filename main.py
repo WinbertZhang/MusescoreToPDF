@@ -32,6 +32,8 @@ try:
 except:
     print('Number of Pages not found')
 
+driver.maximize_window()
+pyautogui.click(100, 100)
 for i in range(10):
     pyautogui.hotkey('ctrl', '-')
     pyautogui.hotkey('command', '-')
