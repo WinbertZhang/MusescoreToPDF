@@ -22,7 +22,7 @@ Don't click on the screen while program is running
 DISCLAIMER: We are not responsible for any legal issues regarding users of our software
 
 ## MacOS
-If you are using macOS, you may want to look at the version of chrome that you're using, and download the appropriate selenium driver [here](https://chromedriver.chromium.org/downloads). Make sure to download the `_m1` version if you are running on ARM.
+If you are using macOS, you may want to look at the version of chrome that you're using by going to chrome settings `Command + ,` and `About Chrome` at the bottom. Download the appropriate selenium driver [here](https://chromedriver.chromium.org/downloads). Make sure to download the `_m1` version if you are running on ARM.
 
 After you extract the zip file, add it to your PATH:
 ```
@@ -44,7 +44,7 @@ python3 main.py
 ```
 You may run into the error "chromedriver" cannot be opened because the developer cannot be verified. In that case run
 ```
-xattr -d com.apple.quarantine /usr/local/bin/chromedriver
+sudo xattr -d com.apple.quarantine /usr/local/bin/chromedriver
 ```
 
 If your code works, follow the onscreen instructions! To stop the virtual environment run `deactivate`.
