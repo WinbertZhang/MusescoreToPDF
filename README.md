@@ -24,8 +24,14 @@ DISCLAIMER: We are not responsible for any legal issues regarding users of our s
 ## MacOS
 If you are using macOS, you may want to look at the version of chrome that you're using, and download the appropriate selenium driver [here](https://chromedriver.chromium.org/downloads). Make sure to download the `_m1` version if you are running on ARM.
 
-After you extract the zip file, add it to this directory. Now install the python dependencies:
+After you extract the zip file, add it to your PATH:
+```
+sudo cp ~/Downloads/chromedriver /usr/local/bin
+```
 
+If you downloaded `chromedriver` elsewhere you may change the source path in the above command.
+
+Verify that it exists by ensuring there's a proper output with `command -v chromedriver`. Now we can install the python dependencies using python's built in virtual environment llibrary:
 ```
 pip3 install venv
 python3 -m venv venv
@@ -36,5 +42,10 @@ Now that you're in a virtual environment, you can install the required dependenc
 pip3 install -r requirements.txt
 python3 main.py
 ```
-Follow the onscreen instructions! To stop the virtual environment run `deactivate`.
+You may run into the error "chromedriver" cannot be opened because the developer cannot be verified. In that case run
+```
+xattr -d com.apple.quarantine /usr/local/bin/chromedriver
+```
+
+If your code works, follow the onscreen instructions! To stop the virtual environment run `deactivate`.
 
