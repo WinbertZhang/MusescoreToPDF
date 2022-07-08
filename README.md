@@ -2,7 +2,7 @@
 Uses a single Python script to scrape [Musescore](https://musescore.com) and saves the score as a pdf. Below are the instructions for use with Windows 10 and above.
 
 ## Windows
-If you are using windows, you need to determine the chrome version you're using by going into chrome's `Settings > About Chrome`. Download the appropriate selenium driver [here](https://chromedriver.chromium.org/downloads).
+If you are using windows, you need to determine the chrome version you're using by going into chrome's `Settings > About Chrome`. Download the appropriate selenium driver [here](https://chromedriver.chromium.org/downloads), and add the `.exe` file to this directory.
 ## Dependencies
 
 - Chrome driver (instructions above)
