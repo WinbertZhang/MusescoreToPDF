@@ -2,5 +2,6 @@
 /chromedriver
 /chromedriver.exe
 /*.png
+/*.svg
 /converted_pdfs
-
+/.pdf_data
