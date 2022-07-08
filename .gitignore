@@ -1,4 +1,5 @@
 /venv
 /chromedriver
+/chromedriver.exe
 /*.png
-
+/*.pdf
