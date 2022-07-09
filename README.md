@@ -59,3 +59,4 @@ sudo xattr -d com.apple.quarantine /usr/local/bin/chromedriver
 
 If your code works, follow the onscreen instructions! To stop the virtual environment run `deactivate`.
 
+
