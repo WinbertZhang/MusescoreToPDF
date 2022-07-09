@@ -14,8 +14,16 @@ pip install Pillow
 pip install pyautogui
 ```
 
+OR
+```
+py -m pip install selenium
+py -m pip install Pillow
+py -m pip install pyautogui
+```
+
+
 ## Instructions
-    1. run python main.py
+    1. run python main.py (or py main.py)
     2. enter valid musescore url
     3. pdf will be in folder named as MusescoreToPDF.pdf
 
